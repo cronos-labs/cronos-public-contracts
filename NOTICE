@@ -1,0 +1,8 @@
+Cronos Public Contracts
+Copyright 2021-present, CRO Protocol Labs ("Crypto.org")
+
+This project contains portions of code derived from the following libraries:
+
+* DSToken
+ * License: GNU General Public License v3.0
+ * Repository: https://github.com/dapphub/ds-token
