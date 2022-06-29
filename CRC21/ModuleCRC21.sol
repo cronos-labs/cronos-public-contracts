@@ -12,18 +12,9 @@ contract ModuleCRC21 is ModuleCRC20  {
         denom = denom_;
     }
 
-    // make unsafe_burn internal
-    function unsafe_burn_internal(address addr, uint amount) internal {
-        // Deduct user's balance without approval
-        require(balanceOf[addr] >= amount, "ds-token-insufficient-balance");
-        balanceOf[addr] = sub(balanceOf[addr], amount);
-        totalSupply = sub(totalSupply, amount);
-        emit Burn(addr, amount);
-    }
-
     // send to another chain through gravity bridge
     function send_to_chain(address recipient, uint amount, uint bridge_fee, uint chain_id) external {
-        unsafe_burn_internal(msg.sender, add(amount, bridge_fee));
+        unsafe_burn(msg.sender, add(amount, bridge_fee));
         emit __CronosSendToChain(msg.sender, recipient, amount, bridge_fee, chain_id);
     }
 
